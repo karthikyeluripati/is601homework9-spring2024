@@ -61,15 +61,15 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: tabrezdn1/qr_code_app:${{ github.sha }} # Uses the Git SHA for tagging
+          tags: karthikysvk/qr_code_fastapi:${{ github.sha }} # Uses the Git SHA for tagging
           platforms: linux/amd64,linux/arm64 # Multi-platform support
-          cache-from: type=registry,ref=tabrezdn1/qr_code_app:cache
+          cache-from: type=registry,ref=karthikysvk/qr_code_fastapi:cache
           cache-to: type=inline,mode=max
           
       - name: Scan the Docker image
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'tabrezdn1/qr_code_app:${{ github.sha }}'
+          image-ref: 'karthikysvk/qr_code_fastapi:${{ github.sha }}'
           format: 'table'
           exit-code: '1' # Fail the job if vulnerabilities are found
           ignore-unfixed: true
